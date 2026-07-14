@@ -8,7 +8,7 @@ LDFLAGS = -L/opt/homebrew/lib
 
 LDLIBS = -lcjson -lcurl
 
-TARGET = gptask
+TARGET = canis
 
 SRCS = main.c $(wildcard core/*.c)
 OBJS = $(SRCS:.c=.o)

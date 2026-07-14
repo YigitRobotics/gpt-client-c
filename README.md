@@ -1,4 +1,4 @@
-# ChatGPT CLI Tool
+# ChatGPT CLI Tool - Canis CLI
 
 ### ℹ️ STATUS: Development (Alpha)
 
@@ -6,11 +6,11 @@
 
 ```bash
 make
-./gptask <command> <message> <options> # Options parameter is not implemented yet.
+./canis <command> <message> <options> # Options parameter is not implemented yet.
 ```
 
 #### To see memory leaks in this project (As I checked, there are no leaks that occurred in this alpha version, but it can cause leaks in the future. If you're worried about that, you can use this: )
 
 ```bash
-valgrind ./gptask <all_options>
+valgrind ./canis <all_options>
 ```
