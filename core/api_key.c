@@ -93,11 +93,6 @@ void check_api_key(request_t *req, response_t *res) {
 
         res->file_size = file_size;
 
-        // for debugging
-        printf("%s\n", req->api_key);
-        printf("%s\n", api_key_file_content);
-        printf("%s\n", req->message);
-
     }
 
     fclose(api_key_file);
