@@ -1,2 +1,4 @@
 .env
 *.dSYM/
+.vscode/
+api_key.txt

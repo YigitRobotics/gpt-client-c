@@ -41,7 +41,7 @@ void save_api_key() {
     return;
 }
 
-void check_api_key(request_t *req) {
+void check_api_key(request_t *req, response_t *res) {
     FILE *api_key_file = open_api_file(0);
 
     if (!api_key_file) {
@@ -91,14 +91,13 @@ void check_api_key(request_t *req) {
         req->api_key = malloc(file_size + 1);
         memcpy(req->api_key, api_key_file_content, file_size);
 
+        res->file_size = file_size;
+
         // for debugging
         printf("%s\n", req->api_key);
         printf("%s\n", api_key_file_content);
         printf("%s\n", req->message);
-    
-        free(req->api_key);
-        free(api_key_file_content);
-        free(req->message);
+
     }
 
     fclose(api_key_file);

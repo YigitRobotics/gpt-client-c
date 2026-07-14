@@ -1,22 +1,30 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -g -Iinclude
+CFLAGS = -Wall -Wextra -Wpedantic -g \
+          -Iinclude \
+          -I/opt/homebrew/include
+
+LDFLAGS = -L/opt/homebrew/lib
+
+LDLIBS = -lcjson -lcurl
 
 TARGET = gptask
 
-SRCS = gpt.c core/api_key.c core/api_request.c core/log.c
-
+SRCS = main.c $(wildcard core/*.c)
 OBJS = $(SRCS:.c=.o)
+
+.PHONY: all clean run
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) -lcurl
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+run: $(TARGET)
+	./$(TARGET)
+
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-.PHONY: all clean
