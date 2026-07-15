@@ -9,6 +9,7 @@ typedef struct
     cJSON *root;
     char *json_payload;
     int file_size;
+    char *return_message_parsed;
 } response_t;
 
 typedef struct {
@@ -34,6 +35,7 @@ FILE* open_api_file(int open_selection);
 void send_response(request_t *req, response_t *res);
 void parse_ask(request_t *req, response_t *res);
 status_code_t free_all(request_t *req, response_t *res);
+char *markdown_to_ansi(const char *md);
 
 // colors-------
 #define RED_COLOR "\e[31m"

@@ -1,12 +1,10 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Wpedantic -g \
-          -Iinclude \
-          -I/opt/homebrew/include
+CFLAGS = -Wall -Wextra -Wpedantic -g -Iinclude
+LDLIBS =
 
-LDFLAGS = -L/opt/homebrew/lib
-
-LDLIBS = -lcjson -lcurl
+CFLAGS += $(shell pkg-config --cflags libcjson libcurl lowdown)
+LDLIBS += $(shell pkg-config --libs libcjson libcurl lowdown)
 
 TARGET = canis
 
@@ -18,7 +16,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+	$(CC) -o $@ $(OBJS) $(LDLIBS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

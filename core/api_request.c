@@ -101,6 +101,9 @@ void send_response(request_t *req, response_t *res) {
             strcpy(res->return_message, text->valuestring);
         }
 
+        res->return_message_parsed = malloc(strlen(response_buffer_callback.data) + 1);
+        strcpy(res->return_message_parsed, markdown_to_ansi(res->return_message));
+
         cJSON_Delete(response_json);
     }
 
