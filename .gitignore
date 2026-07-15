@@ -2,3 +2,5 @@
 *.dSYM/
 .vscode/
 api_key.txt
+*.o
+canis

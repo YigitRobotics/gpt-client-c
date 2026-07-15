@@ -27,11 +27,17 @@ typedef enum {
     MSG_FAIL
 } status_code_t; // For free_all_function now
 
+void open_and_read_banner_file();
 void save_api_key();
 void check_api_key(request_t *req, response_t *res);
 FILE* open_api_file(int open_selection);
 void send_response(request_t *req, response_t *res);
 void parse_ask(request_t *req, response_t *res);
 status_code_t free_all(request_t *req, response_t *res);
+
+// colors-------
+#define RED_COLOR "\e[31m"
+#define CYAN_COLOR "\x1b[36m"
+#define RESET_COLOR "\x1b[30m"
 
 #endif

@@ -10,7 +10,7 @@ LDLIBS = -lcjson -lcurl
 
 TARGET = canis
 
-SRCS = main.c $(wildcard core/*.c)
+SRCS = main.c $(wildcard core/*.c banner/*.c)
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: all clean run

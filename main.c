@@ -12,6 +12,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    open_and_read_banner_file();
+
     if (strcmp(argv[1], "ask") == 0) {
         request.message = malloc(strlen(argv[2]) + 1);
         strcpy(request.message, argv[2]);
@@ -21,7 +23,15 @@ int main(int argc, char *argv[]) {
         send_response(&request, &response);
     }
 
-    printf("\n\n%s", response.return_message);
+
+    else {
+        fprintf(stderr, RED_COLOR "\nCommand not found - Exiting.\n\n");
+        printf(RESET_COLOR, "");
+    }
+
+    if (response.return_message) {
+        printf("\n\n%s", response.return_message);
+    }
     free_all(&request, &response);
     printf("%s", "Task completed.\n");
 
